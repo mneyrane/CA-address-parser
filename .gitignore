@@ -1,0 +1,10 @@
+# byte-compiled files 
+__pycache__
+
+# distribution and packaging
+build/
+dist/
+*.egg-info/
+
+# other
+/virtualenv
