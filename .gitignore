@@ -8,3 +8,6 @@ dist/
 
 # other
 /virtualenv
+/datasets/*_pg.csv.gz
+/scripts/*_pg.csv
+/figures

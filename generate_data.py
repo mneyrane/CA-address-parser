@@ -1,6 +1,7 @@
 import csv
 import gzip
 import json
+import time
 
 import numpy as np
 import pandas as pd
@@ -21,7 +22,7 @@ def create_input_output_pair(genmap, tmpls, rng):
     clf_chars = ['{}'.format(e.value) for e in clf]
     
     input_seq = ''.join(address)
-    output_seq = ''.join(clf_chars)
+    output_seq = ' '.join(clf_chars)
     
     return input_seq, output_seq
 
@@ -125,16 +126,27 @@ generator_map = {
     'po' : g_postcode,
 }
 
+#
+# generate and save data
+#
+
+train_data_path = 'datasets/train_sequences_pg.csv.gz' 
+test_data_path = 'datasets/test_sequences_pg.csv.gz'
+
 # training data
-with gzip.open('datasets/train_sequences_pg.csv.gz', 'wt', newline='') as trainfile:
+with gzip.open(train_data_path, 'wt', newline='') as trainfile:
     for _ in range(NUM_TRAIN_PTS):
         writer = csv.writer(trainfile, delimiter='|')
         pair = create_input_output_pair(generator_map, templates, rng)
         writer.writerow(pair)
+
+print(f"Saved {NUM_TRAIN_PTS} training points to '{train_data_path}'.")
         
 # synthetic test data
-with gzip.open('datasets/test_sequences_pg.csv.gz', 'wt', newline='') as testfile:
+with gzip.open(test_data_path, 'wt', newline='') as testfile:
     for _ in range(NUM_TEST_PTS):
         writer = csv.writer(testfile, delimiter='|')
         pair = create_input_output_pair(generator_map, templates, rng)
         writer.writerow(pair)
+
+print(f"Saved {NUM_TEST_PTS} test points to '{test_data_path}'.")
