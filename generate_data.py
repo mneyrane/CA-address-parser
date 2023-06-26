@@ -12,8 +12,8 @@ import address.proc_gen as pg
 
 # constants and functions
 SEED = 128
-NUM_TRAIN_PTS = 128000
-NUM_TEST_PTS = 16000
+NUM_TRAIN_PTS = 192000
+NUM_TEST_PTS = 32000
 
 def create_input_output_pair(genmap, tmpls, rng):
     idx = rng.choice(len(tmpls))
@@ -34,11 +34,14 @@ rng = np.random.default_rng(SEED)
 #
 
 # unit numbers
+df_unit = pd.read_csv(
+    'datasets/unit_designation.txt', names=['values'], dtype='string', na_filter=False)
+
 g_unit = pg.AlphanumGenerator(
     nmin=1, nmax=10000, 
     name='unit', 
     rng=rng,
-    desig=['', 'UNIT'],
+    desig=df_unit['values'],
 )
 
 # house numbers

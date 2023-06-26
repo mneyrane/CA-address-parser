@@ -51,8 +51,8 @@ test_stats = logs[test_mask].str.extract(
 test_stats = test_stats.astype(float)
 
 test_stats = test_stats.rename({
-    0 : 'per-char (PG)',
-    1 : 'parser (PG)',
+    0 : 'per-char (generated)',
+    1 : 'parser (generated)',
     2 : 'per-char (real)',
     3 : 'parser (real)',
     }, axis='columns')
@@ -73,18 +73,20 @@ test_results = pd.melt(
 sns.set_theme(context='paper', style='whitegrid', font='Arimo')
 facecolor = '#f8f5f0'
 
+fig, axs = plt.subplots(1, 2, figsize=(8,3), facecolor=facecolor)
+
 # training accuracy
-plt.figure(facecolor=facecolor)
-ax = sns.lineplot(data=train_results, x='batch', y='accuracy', hue='metric', errorbar=('pi', 100))
-ax.set_xlabel('Batch number')
-ax.set_ylabel('Accuracy (%)')
-ax.set_title('CCAPNet training metrics')
-plt.savefig(fig_dir / 'train_plot.svg', bbox_inches='tight')
+sns.lineplot(data=train_results, x='batch', y='accuracy', hue='metric', errorbar=('pi', 100), ax=axs[0])
+axs[0].set_xlabel('Batch number')
+axs[0].set_xticks([0,15000,30000,45000,60000,75000])
+axs[0].set_ylabel('Accuracy (%)')
+axs[0].set_title('training')
 
 # test accuracy
-plt.figure(facecolor=facecolor)
-ax = sns.lineplot(data=test_results, x='epoch', y='accuracy', hue='metric')
-ax.set_xlabel('Epoch')
-ax.set_ylabel('Accuracy (%)')
-ax.set_title('CCAPNet test metrics')
-plt.savefig(fig_dir / 'test_plot.svg', bbox_inches='tight')
+sns.lineplot(data=test_results, x='epoch', y='accuracy', hue='metric', ax=axs[1])
+axs[1].set_xlabel('Epoch')
+axs[1].set_ylabel('Accuracy (%)')
+axs[1].set_title('test')
+
+fig.tight_layout()
+fig.savefig(fig_dir / 'metric_plots.svg', bbox_inches='tight')

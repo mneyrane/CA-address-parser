@@ -49,24 +49,15 @@ Any results produced by scripts, such as figures or model checkpoints, are self-
 
 These are presented in order of execution if starting from scratch.
 
-- `generate_data.py` : Randomly generate addresses.[^1]
+- `generate_data.py` : Randomly generate addresses.
 - `model.py` : Neural network model definition, termed CCAPNet (**C**anadian **C**ivic **A**ddress **P**arser neural **net**work).
 - `train.py` : Train the model. Has command line arguments that can be viewed with `-h` or `--help`.
 - `inference.py` : Use the model for inference on input text. Has command line arguments that can be viewed with `-h` or `--help`.
 - `plot_*.py` : Create figures for metrics and performance. Accepts a specific input from the model folder produced by `train.py`.
 
-[^1]: Takes about 65 seconds to run on a Intel i7-7700K CPU to generate 128000 training points 16000 test points.
-
 ## Attributions and related work
 
-I attribute using
-
-- a *character-based* address parser
-- *typos* to regularize training
-
-to Jason Rigby's [AddressNet](https://towardsdatascience.com/addressnet-how-to-build-a-robust-street-address-parser-using-a-recurrent-neural-network-518d97b9aebd) project.
-Thank you Jason!
-
+The idea of character-level parsing and typo augmentation draws inspiration from Jason Rigby's [AddressNet](https://towardsdatascience.com/addressnet-how-to-build-a-robust-street-address-parser-using-a-recurrent-neural-network-518d97b9aebd).
 If you are interested in address parsing or working with address data, I strongly recommend the following resources:
 
 - [libpostal](https://github.com/openvenues/libpostal): state-of-the-art international address normalizer and parser

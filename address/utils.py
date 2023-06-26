@@ -33,8 +33,7 @@ def normalize_text(s):
     """
     s = unidecode(s)
     s = s.upper()
-    s = s.replace('-', ' ')
-    s = re.sub(r'[^A-Z0-9 ]', '', s, flags=re.ASCII)
+    s = re.sub(r'[^A-Z0-9 ]', ' ', s, flags=re.ASCII)
     s = s.strip()
     s = re.sub(r'\s+', ' ', s)
 

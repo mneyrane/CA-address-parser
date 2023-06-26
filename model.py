@@ -9,8 +9,8 @@ class CCAPNet(nn.Module):
         n_x_tokens = x_vocab_size + 1 # final index is a pad token
         n_y_tokens = y_vocab_size + 1
         
-        self.embed_size = 4
-        self.hidden_size = 16 # needed in forward()
+        self.embed_size = 8
+        self.hidden_size = 32 # needed in forward()
         
         self.embed = nn.Embedding(n_x_tokens, self.embed_size, padding_idx=x_vocab_size, max_norm=1.)
         self.gru_bi = nn.GRU(self.embed_size, self.hidden_size, batch_first=True, bidirectional=True)

@@ -40,12 +40,15 @@ norm = clr.LogNorm()
 cmap = sns.color_palette('crest', as_cmap=True)
 cmap.set_bad('lightgrey')
 
+fig, axs = plt.subplots(1, 2, figsize=(7.25,3), facecolor=facecolor)
+
 # confusion matrix for procedurally generated data
-plt.figure(facecolor=facecolor)
-ax = sns.heatmap(cm_pg, linewidth=linewidth, cmap=cmap, norm=norm)
-plt.savefig(fig_dir / 'cm_pg.svg', bbox_inches='tight')
+sns.heatmap(cm_pg, linewidth=linewidth, cmap=cmap, norm=norm, square=True, ax=axs[0])
+axs[0].set_title('generated')
 
 # confusion matrix for real world data
-plt.figure(facecolor=facecolor)
-ax = sns.heatmap(cm_real, linewidth=linewidth, cmap=cmap, norm=norm)
-plt.savefig(fig_dir / 'cm_real.svg', bbox_inches='tight')
+sns.heatmap(cm_real, linewidth=linewidth, cmap=cmap, norm=norm, square=True, ax=axs[1])
+axs[1].set_title('real')
+
+fig.tight_layout()
+fig.savefig(fig_dir / 'cm.svg', bbox_inches='tight')

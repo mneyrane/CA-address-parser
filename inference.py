@@ -84,7 +84,8 @@ if __name__ == '__main__':
             if cat == TokenCategory.SEPARATOR:
                 for key in tokens:
                     tokens[key].append(' ')
-
+                continue
+            
             if cat.name not in tokens:
                 tokens[cat.name] = []
             
