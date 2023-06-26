@@ -3,6 +3,8 @@
 Mockup of a character-based Canadian address parser, based on training a neural network on data synthesized by a context-free grammar.
 A short technical report of the implementation is detailed on my [website](https://mneyrane.com/projects/addressparser), which I encourage to read.
 
+<img src="ResCCAP.svg" alt="Residual Canadian Civic Address Parser (ResCCAP) model" height="160px">
+
 *NOTE: this work is experimental, and the model provided in question is not suitable for production!*
 
 ## Motivation
