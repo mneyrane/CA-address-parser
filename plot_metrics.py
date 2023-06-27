@@ -78,8 +78,8 @@ fig, axs = plt.subplots(1, 2, figsize=(8,3), facecolor=facecolor)
 # training accuracy
 sns.lineplot(data=train_results, x='batch', y='accuracy', hue='metric', errorbar=('pi', 100), ax=axs[0])
 axs[0].set_xlabel('Batch number')
-axs[0].set_xticks([0,15000,30000,45000,60000,75000])
 axs[0].set_ylabel('Accuracy (%)')
+axs[0].set_xticks([0,30000,60000,90000,120000])
 axs[0].set_title('training')
 
 # test accuracy

@@ -11,3 +11,5 @@ dist/
 /datasets/*_pg.csv.gz
 /scripts/*_pg.csv
 /figures
+0*.npz
+0*.pt

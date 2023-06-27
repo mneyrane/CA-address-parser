@@ -172,7 +172,7 @@ if __name__ == '__main__':
     
     # define model, optimizer and loss
     model = CCAPNet(x_pad_token, y_pad_token)
-    optimizer = torch.optim.RMSprop(model.parameters(), lr=1e-3, weight_decay=2.5e-5)
+    optimizer = torch.optim.RMSprop(model.parameters(), lr=5e-4, weight_decay=5e-5)
     
     loss = torch.nn.CrossEntropyLoss(
         ignore_index=y_pad_token, reduction='mean')
