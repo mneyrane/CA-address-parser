@@ -10,9 +10,9 @@ A short technical report of the implementation is detailed on my [website](https
 
 ## Motivation
 
-The key motivation of this work is purely hobbyist.
+The key motivation of this work is to be a portfolio project.
 It is a voluntary exercise, on my part, to assemble data and a machine learning model to tackle a nontrivial natural language task.
-It also extends and improves upon my past class (statistical learning) project, where back then, my machine learning background was in its infancy.
+The project extends and improves upon my past class (statistical learning) project, where back then, my machine learning background was in its infancy.
 
 The choice of address parsing is inspired by my past work at Statistics Canada.
 At the time, I was responsible to help assemble public Canadian infrastructure datasets from open sources.
